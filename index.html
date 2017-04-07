@@ -14,7 +14,7 @@
     <script src="./js/firebase.js"></script>
     <script type="text/javascript" src="./js/firebase-common.js"></script>
   </head>
-  <body>
+  <body style="background:url('res/img/splash2.jpg');">
 
 
     <div id="wrapper">
@@ -22,9 +22,9 @@
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
           <li class="sidebar-brand">
-            <!-- <a href="#">
+           <!-- <img src="res/img/logo.png" height="50"> --><a href="#">
               Food4U
-            </a> -->
+            </a> 
           </li>
           <li class="sidebar-links" onclick="goToIndex()">
             <a>My Feed</a>
@@ -34,18 +34,25 @@
           </li>
         </ul>
       </div>
-      <!-- /#sidebar-wrapper -->
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <img src="res/img/logo.png" height="50">
-          </div>
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
 
-            <li class="dropdown">
+ 		<!-- /#sidebar-wrapper -->
+      <div class="navbar navbar-default navbar-static-top" role="navigation">
+     <div class="container">
+
+
+          <div class="navbar-header">
+          <img src="res/img/logo.png" height="50">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+               </button>
+
+          </div>
+          <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">Home</a></li>
+                     <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-user"></span>
                 <span id="user-signed">
@@ -56,9 +63,13 @@
                 <li><a onclick="userSignOut()">Logout</a></li>
               </ul>
             </li>
-          </ul>
-        </div>
-      </nav>
+               </ul>
+          </div>
+
+  </div>
+</div>
+      
+      
       <!-- Page Content -->
       <div id="page-content-wrapper">
         <div class="container-fluid">
