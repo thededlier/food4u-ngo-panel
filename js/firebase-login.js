@@ -14,7 +14,8 @@ function signUpNewUser() {
     'ngo_name'        : name,
     'ngo_phone'       : phone,
     'impact_factor'   : 0,
-    'orders_taken'    : 0
+    'orders_taken'    : 0,
+    'size'            : 0
   };
 
   var newUserKey = database.ref().child('ngos').push().key;

@@ -1,13 +1,16 @@
 function fetchData(user) {
   firebase.database().ref().child('ngos').orderByChild('ngo_email').equalTo(user.email).on('child_added', function(data) {
     ngoKey = data.key;
-    document.getElementById('ngo-email').value = data.val().ngo_email;
+    document.getElementById('ngo-name').value     = data.val().ngo_name;
+    document.getElementById('ngo-email').value    = data.val().ngo_email;
+    document.getElementById('ngo-phone').value    = data.val().ngo_phone;
+    document.getElementById('website').value      = data.val().website;
+    document.getElementById('ngo-size').value     = data.val().size;
   });
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    console.log("user signed in");
     var display_name = user.email;
     document.getElementById('user-signed').innerHTML = display_name;
     fetchData(user);
