@@ -10,11 +10,11 @@ function signUpNewUser() {
   });
 
   var newUserData = {
-    'ngo-email'       : email,
-    'ngo-name'        : name,
-    'ngo-phone'       : phone,
-    'impact-factor'   : 0,
-    'orders-taken'    : 0
+    'ngo_email'       : email,
+    'ngo_name'        : name,
+    'ngo_phone'       : phone,
+    'impact_factor'   : 0,
+    'orders_taken'    : 0
   };
 
   var newUserKey = database.ref().child('ngos').push().key;

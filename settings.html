@@ -13,6 +13,7 @@
     <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
     <script src="./js/firebase.js"></script>
     <script type="text/javascript" src="./js/firebase-common.js"></script>
+    <script src="./js/firebase-settings.js"></script>
   </head>
   <body>
 
@@ -67,6 +68,39 @@
               <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
                 <span class="glyphicon glyphicon-menu-hamburger"></span>
               </a>
+
+              <button class="btn btn-primary" onclick="">Add New Contact</button>
+              <div class="row">
+                <div class="card col-lg-8">
+                  <div class="card-content">
+                    <form class="form" role="form">
+                      <div class="form-group">
+                        <label for="ngo-name">Organization</label>
+                        <input type="text" class="form-control" name="ngo-name" id="ngo-name">
+                      </div>
+                      <div class="form-group">
+                        <label for="ngo-email">Email</label>
+                        <input type="email" class="form-control" name="ngo-email" id="ngo-email">
+                      </div>
+                      <div class="form-group">
+                        <label for="ngo-phone">Phone</label>
+                        <input type="text" class="form-control" name="ngo-phone" id="ngo-phone">
+                      </div>
+                      <div class="form-group">
+                        <label for="website">Website</label>
+                        <input type="text" class="form-control" name="website" id="website">
+                      </div>
+                      <div class="form-group">
+                        <label for="ngo-size">Organization Size</label>
+                        <input type="text" class="form-control" name="ngo-phone" id="ngo-phone">
+                      </div>
+                      <div class="center card-submit">
+                        <button class="btn btn-primary btn-lg">Update</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
