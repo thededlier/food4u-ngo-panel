@@ -1,5 +1,9 @@
 function goToSettings() {
-  window.location = "settings.html";
+  window.location = "./settings.html";
+}
+
+function goToIndex() {
+  window.location = "./index.html";
 }
 
 function userSignOut() {

@@ -123,3 +123,7 @@ body {
 .navbar {
   border-bottom: 2px solid #550709;
 }
+
+.sidebar-links:hover {
+  cursor: pointer;
+}
