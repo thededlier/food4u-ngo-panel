@@ -1,0 +1,29 @@
+function loadEvent(user, title, desc, address, region, expire_time) {
+
+  var html_code =   '<div class="card col-lg-8">' +
+                      '<div class="card-content">' +
+                        '<h3>' + title + '</h3>' +
+                        '<p>' + desc + '</p>' +
+                        '<p class="pull-left"><b>' + address + '</b></p>' +
+                        '<div class="card-controls">' +
+                          '<button class="btn btn-warning">Expires on ' + expire_time + '</button>' +
+                          '<button class="btn btn-default">Region : ' + region + '</button>' +
+                        '</div>' +
+                      '</div>' +
+                    '</div>';
+
+  var div = document.getElementById('feed');
+  div.innerHTML += html_code;
+}
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    firebase.database().ref('feed').on('child_added', function(data) {
+      loadEvent(user, data.val().title, data.val().desc, data.val().address, data.val().region, data.val().expire_time);
+      console.log(data.val());
+    });
+  } else {
+    window.location = "./login.html";
+    console.log("user not signed in");
+  }
+});
