@@ -24,8 +24,7 @@ body {
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background-image: url("res/img/splash1.jpg");
-  background-color: #500000;
+  background-color: #404040;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -64,7 +63,7 @@ body {
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
-  color: #999999;
+  color: #fff;
 }
 
 .sidebar-nav li a:hover {
@@ -136,7 +135,7 @@ body {
 }
 /* Card */
 .card {
-    margin: 5px 0 5px 0;
+    margin: 5px 0 5px 50px;
     background-color: rgba(255, 255, 255, 1);
     border: 1px solid #b7b7b7;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
