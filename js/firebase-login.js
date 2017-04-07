@@ -10,7 +10,6 @@ function signUpNewUser() {
   });
 
   var newUserData = {
-    'ngo-contact'   : '',
     'ngo-email'     : email,
     'ngo-name'      : name,
     'ngo-phone'     : phone

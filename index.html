@@ -11,9 +11,82 @@
     <link rel="stylesheet" href="./css/stylesheet.css">
   </head>
   <body>
-    <input type="button" onclick="goToSettings()" class="btn btn-primary" value="Settings">
 
-    <input type="button" onclick="userSignOut()" class="btn btn-primary" value="Sign Out">
+
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand">
+            <a href="#">
+              Food4U
+            </a>
+          </li>
+          <li>
+            <a href="#">Dashboard</a>
+          </li>
+          <li>
+            <a href="#">Shortcuts</a>
+          </li>
+          <li>
+            <a href="#">Overview</a>
+          </li>
+          <li>
+            <a href="#">Events</a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+          <li>
+            <a href="#">Services</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /#sidebar-wrapper -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Food4U</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-user"></span>
+                <span id="user-signed">
+                  <script>document.write(display_name);</script>
+                </span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a onclick="userSignOut()">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+              </a>
+              <input type="button" onclick="goToSettings()" class="btn btn-primary" value="Settings">
+              <input type="button"  class="btn btn-primary" value="Sign Out">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /#page-content-wrapper -->
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -24,28 +97,12 @@
     <script src="./js/firebase.js"></script>
     <script type="text/javascript" src="./js/login.js"></script>
 
-    <script type="text/javascript">
-      function goToSettings() {
-        window.location = "settings.html";
-      }
-
-      function userSignOut() {
-        firebase.auth().signOut();
-      }
-
-      // Change in auth state
-      firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          console.log("user signed in");
-        } else {
-          window.location = "./login.html";
-          console.log("user not signed in");
-        }
-      });
-      // Page Loaded
-      window.addEventListener('load', function() {
-        console.log('Loaded');
-      }, false);
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
     </script>
   </body>
 </html>
