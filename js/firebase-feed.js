@@ -1,8 +1,9 @@
-function loadEvent(user, key, title, desc, address, region, expire_time) {
+function loadEvent(user, key, title, desc, address, region, expire_time, publisher) {
 
   var html_code =   '<div class="card col-lg-8">' +
                       '<div class="card-content">' +
                         '<h3>' + title + '</h3>' +
+                        '<i>' + publisher + '</i><br>' +
                         '<p>' + desc + '</p>' +
                         '<p class="pull-left"><b>' + address + '</b></p><br><br>' +
                         '<div class="card-submit">' +
@@ -18,15 +19,14 @@ function loadEvent(user, key, title, desc, address, region, expire_time) {
 }
 
 function clickRequest(key) {
-    data = firebase.database().ref('feed').child(key);
+  data = firebase.database().ref('feed').child(key);
 
-     $("#sendRequestModal").modal();
+  $("#sendRequestModal").modal();
 }
-
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     firebase.database().ref('feed').on('child_added', function(data) {
-      loadEvent(user, data.key, data.val().title, data.val().desc, data.val().address, data.val().region, data.val().expire_time);
+      loadEvent(user, data.key, data.val().title, data.val().desc, data.val().address, data.val().region, data.val().expire_time, data.val().publisher_name);
       console.log(data.val());
     });
   } else {
