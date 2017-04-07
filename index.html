@@ -13,6 +13,7 @@
     <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
     <script src="./js/firebase.js"></script>
     <script type="text/javascript" src="./js/firebase-common.js"></script>
+    <script type="text/javascript" src="./js/firebase-feed.js"></script>
   </head>
   <body style="background:url('res/img/splash2.jpg');">
 
@@ -78,11 +79,36 @@
               <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
                 <span class="glyphicon glyphicon-menu-hamburger"></span>
               </a>
+              <div class="feed" id="feed">
+
+              </div>
             </div>
           </div>
         </div>
       </div>
       <!-- /#page-content-wrapper -->
+
+      <div id="sendRequestModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Select Contact and Quantity</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
