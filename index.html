@@ -25,7 +25,7 @@
           <li class="sidebar-brand">
            <!-- <img src="res/img/logo.png" height="50"> --><a href="#">
               Food4U
-            </a> 
+            </a>
           </li>
           <li class="sidebar-links" onclick="goToIndex()">
             <a>My Feed</a>
@@ -69,8 +69,8 @@
 
   </div>
 </div>
-      
-      
+
+
       <!-- Page Content -->
       <div id="page-content-wrapper">
         <div class="container-fluid">
@@ -99,10 +99,20 @@
             </div>
             <div class="modal-body">
               <form>
+                <div class="form-group">
+                  <label>Select Contact</label>
+                  <select class="form-control" name="ngo-contact" id="ngo-contact">
 
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>How many people can you feed?</label>
+                  <input type="number" class="form-control" name="req-quantity" id="req-quantity">
+                </div>
               </form>
             </div>
             <div class="modal-footer">
+              <button type="button" class="btn btn-primary" onclick="sendRequest()" data-dismiss="modal">Send Request</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
