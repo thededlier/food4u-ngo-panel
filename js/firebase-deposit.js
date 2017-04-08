@@ -18,7 +18,7 @@ function createDeposit() {
   updates['/deposit/' + newDepositKey] = postData;
 
   console.log('Created Deposit');
-
+  swal("Deposit Site Created Successfully", "", "success");
   return database.ref().update(updates);
 }
 
