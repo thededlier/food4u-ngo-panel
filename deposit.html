@@ -13,7 +13,7 @@
     <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
     <script src="./js/firebase.js"></script>
     <script type="text/javascript" src="./js/firebase-common.js"></script>
-    <!-- <script type="text/javascript" src="./js/firebase-feed.js"></script> -->
+    <script type="text/javascript" src="./js/firebase-deposit.js"></script>
   </head>
   <body style="background:url('res/img/splash2.jpg');">
 
@@ -118,8 +118,29 @@
                           <input type="datetime-local" class="form-control" name="end-time" id="end-time" required>
                         </div>
                       </div>
+                      <div class="form-group">
+                        <label class="control-label col-sm-2" for="location">Location</label>
+                        <div class="col-sm-10">
+                          <select class="form-control" name="location" id="location">
+                            <option value="TN">Tamil Nadu</option>
+                            <option value="HP">Himachal Pradesh</option>
+                            <option value="KN">Karnataka</option>
+                            <option value="KR">Kerala</option>
+                            <option value="AP">Andhra Pradesh</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-sm-2" for="address">Address</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="address" id="address">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div id="map"></div>
+                      </div>
                       <div class="center card-submit">
-                        <button class="btn btn-primary btn-lg">Update</button>
+                        <button class="btn btn-primary btn-lg" onclick="createDeposit()">Create</button>
                       </div>
                     </form>
                   </div>
@@ -143,6 +164,66 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
+    </script>
+
+    <script>
+      var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 6
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        google.maps.event.addListener(map, 'click', function(event) {
+          if ( marker ) {
+            marker.setPosition(location);
+          } else {
+            marker = new google.maps.Marker({
+              position: event.latLng,
+              map: map
+            });
+          }
+          marker = new google.maps.Marker({
+            position: event.latLng,
+            map: map
+          });
+
+          console.log(marker);
+        });
+
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8VMfD6SJEuQfZU2McV36Jbhuk9xqGn9M&callback=initMap">
     </script>
   </body>
 </html>
