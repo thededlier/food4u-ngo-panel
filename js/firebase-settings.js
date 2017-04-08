@@ -36,7 +36,9 @@ function addContact() {
         updates['ngos/' + ngoKey + '/contacts/' + contactKey] = postContact;
 
         $("#addContactModal").modal("hide");
+
         console.log('Contact Added')
+        swal("Contact Created", "", "success");
         return database.ref().update(updates);
       });
     } else {

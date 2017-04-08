@@ -46,6 +46,11 @@ function sendRequest(key) {
   firebase.database().ref().child('ngos').orderByChild('ngo_email').equalTo(user.email).on('child_added', function(data) {
     ngoKey = data.key;
 
+    firebase.database().ref('/feed/' + key).on('value' , function(data) {
+      publisher_name    = data.val().publisher_name;
+      publisher_number  = data.val().mobile;
+    });
+
     firebase.database().ref('/ngos/' + ngoKey + '/contacts/' + contactKey).on('value' , function(data) {
       contact_name = data.val().contact_name;
       contact_number = data.val().contact_phone;
@@ -72,6 +77,8 @@ function sendRequest(key) {
       'impact' : setImpact-impact
     })
   });
+
+  swal("Sent Request!",  "Contact : "  + publisher_name + " - " + publisher_number, "success");
 }
 
 function getContactOptions(loc) {
