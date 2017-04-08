@@ -2,7 +2,11 @@ function loadEvent(user, key, dat) {
 
   var html_code =   '<div class="card col-lg-12">' +
                       '<div class="card-content">' +
-                        '<h3>' + dat.title + '</h3>' +
+                        '<h3>' + dat.title;
+                    if(dat.type == 'daily') {
+                      html_code += '<span class="btn btn-primary pull-right">Daily Event</span>';
+                    }
+           html_code += '</h3>' +
                         '<i>' + dat.publisher_name + '</i><br>' +
                         '<p>' + dat.desc + '</p>' +
                         '<p><b>' + dat.address + '</b></p><br>' +
@@ -134,7 +138,8 @@ window.addEventListener('load', function() {
       'region'          : data.val().region,
       'expire_time'     : data.val().expire_time,
       'publisher_name'  : data.val().publisher_name,
-      'impact'          : data.val().impact
+      'impact'          : data.val().impact,
+      'type'            : data.val().order_type
     };
     loadEvent(user, data.key, dat);
     console.log(data.val());

@@ -3,7 +3,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     console.log(user);
 
     var rootKey, eventKey, orderKey;
-    var html='', contacts_html, title, address, user_name, user_phone, contact_name, contact_phone;
+    var html='', contacts_html='', title, address, user_name, user_phone, contact_name, contact_phone;
 
     firebase.database().ref().child('ngos').orderByChild('ngo_email').equalTo(user.email).on('child_added', function(data) {
       rootKey = data.key;
@@ -16,7 +16,7 @@ firebase.auth().onAuthStateChanged(function(user) {
           address     = data.val().address;
           user_name   = data.val().publisher_name;
           user_phone  = data.val().mobile;
-          html = "";
+          html = ""; contact_html = '';
           html +=
                   '<div class="card">' +
                     '<div class="card-content">' +
@@ -24,20 +24,19 @@ firebase.auth().onAuthStateChanged(function(user) {
                       '<h5> Name : ' + user_name + '</h5>' +
                       '<h5> Mobile Number : ' + user_phone + '</h5>' +
                       '<h3> Assigned Contacts </h3>';
-          firebase.database().ref('feed/' + eventKey + '/ngos/' + rootKey).on('child_added', function(data) {
+          firebase.database().ref('feed/' + eventKey + '/ngos/' + rootKey).child('contacts').on('child_added', function(data) {
             // console.log(data.val());
-            firebase.database().ref('feed/' + eventKey + '/ngos/' + rootKey + '/' + data.key).on('child_added', function(data) {
-              console.log(data.val());
-              contact_name    = data.val().contact_name;
-              contact_phone   = data.val().contact_number;
+            console.log(data.val());
+            contact_name    = data.val().contact_name;
+            contact_phone   = data.val().contact_number;
 
-              html +=
-                      '<div class="assigned">' +
-                        '<h5>' + contact_name + ' - ' + contact_phone + '</h5>' +
-                      '</div>';
-            });
+            contact_html +=
+                    '<div class="assigned">' +
+                      '<h5>' + contact_name + ' - ' + contact_phone + '</h5>' +
+                    '</div>';
+
           });
-          html +=
+          html +=   contact_html +
                   '</div>' +
                 '</div>';
 
