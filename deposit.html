@@ -13,9 +13,9 @@
     <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
     <script src="./js/firebase.js"></script>
     <script type="text/javascript" src="./js/firebase-common.js"></script>
-    <script src="./js/firebase-settings.js"></script>
+    <!-- <script type="text/javascript" src="./js/firebase-feed.js"></script> -->
   </head>
-   <body style="background:url('res/img/splash2.jpg');">
+  <body style="background:url('res/img/splash2.jpg');">
 
 
     <div id="wrapper">
@@ -23,9 +23,9 @@
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
           <li class="sidebar-brand">
-            <!-- <a href="#">
+           <!-- <img src="res/img/logo.png" height="50"> --><a href="#">
               Food4U
-            </a> -->
+            </a>
           </li>
           <li class="sidebar-links" onclick="goToIndex()">
             <a>My Feed</a>
@@ -38,8 +38,9 @@
           </li>
         </ul>
       </div>
-      <!-- /#sidebar-wrapper -->
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
+
+ 		<!-- /#sidebar-wrapper -->
+      <div class="navbar navbar-default navbar-static-top" role="navigation">
      <div class="container">
 
 
@@ -71,6 +72,8 @@
 
   </div>
 </div>
+
+
       <!-- Page Content -->
       <div id="page-content-wrapper">
         <div class="container-fluid">
@@ -80,39 +83,39 @@
                 <span class="glyphicon glyphicon-menu-hamburger"></span>
               </a>
 
-              <button class="btn btn-primary" onclick="clickContact()">Add New Contact</button>
               <div class="row">
                 <div class="card col-lg-8">
                   <div class="card-content">
+                    <h2> Create a new Deposit Site </h2>
                     <form class="form-horizontal">
                       <div class="form-group">
-                        <label class="control-label col-sm-2" for="ngo-name">Organization</label>
+                        <label class="control-label col-sm-2" for="deposit-name">Name</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" name="ngo-name" id="ngo-name" required>
+                          <input type="text" class="form-control" name="deposit-name" id="deposit-name" required>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-sm-2" for="ngo-email">Email</label>
+                        <label class="control-label col-sm-2" for="deposit-desc">Description</label>
                         <div class="col-sm-10">
-                        <input type="email" class="form-control" name="ngo-email" id="ngo-email" required>
+                          <textarea class="form-control" name="deposit-desc" id="deposit-desc" rows=3 required></textarea>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-sm-2" for="ngo-phone">Phone</label>
+                        <label class="control-label col-sm-2" for="deposit-contact">Contact Number</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" name="ngo-phone" id="ngo-phone" required>
+                          <input type="text" class="form-control" name="deposit-contact" id="deposit-contact" required>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-sm-2" for="website">Website</label>
+                        <label class="control-label col-sm-2" for="date-time">Start Time</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" name="website" id="website" required>
+                          <input type="datetime" class="form-control" name="start-time" id="start-time" required>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-sm-2" for="ngo-size">Size</label>
+                        <label class="control-label col-sm-2" for="date-time">End Time</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" name="ngo-size" id="ngo-size">
+                          <input type="datetime" class="form-control" name="end-time" id="end-time" required>
                         </div>
                       </div>
                       <div class="center card-submit">
@@ -122,51 +125,13 @@
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </div>
       <!-- /#page-content-wrapper -->
 
-      <div id="addContactModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Select Contact and Quantity</h4>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label>Name</label>
-                  <input type="text" class="form-control" name="contact-name" id="contact-name">
-                </div>
-                <div class="form-group">
-                  <label>Phone Number</label>
-                  <input type="text" class="form-control" name="contact-phone" id="contact-phone">
-                </div>
-                <div class="form-group">
-                  <label>Location</label>
-                  <select class="form-control" name="contact-loc" id="contact-loc">
-                    <option value="TN">Tamil Nadu</option>
-                    <option value="HP">Himachal Pradesh</option>
-                    <option value="KN">Karnataka</option>
-                    <option value="KR">Kerala</option>
-                    <option value="AP">Andhra Pradesh</option>
-                  </select>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" onclick="addContact()">Send Request</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
