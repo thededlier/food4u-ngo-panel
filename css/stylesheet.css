@@ -2,6 +2,10 @@ body {
   overflow-x: hidden;
 }
 
+#map {
+        height: 500px;
+      }
+
 /* Toggle Styles */
 
 #wrapper {

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Food 4 You</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+    <script src="./js/firebase.js"></script>
+    <script type="text/javascript" src="./js/firebase-common.js"></script>
+    <script type="text/javascript" src="./js/firebase-deposit.js"></script>
+  </head>
+  <body style="background:url('res/img/splash2.jpg');">
+
+
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand">
+           <!-- <img src="res/img/logo.png" height="50"> --><a href="#">
+              Food4U
+            </a>
+          </li>
+          <li class="sidebar-links" onclick="goToIndex()">
+            <a>My Feed</a>
+          </li>
+          <li class="sidebar-links" onclick="goToSettings()">
+            <a>Settings</a>
+          </li>
+          <li class="sidebar-links" onclick="goToDeposit()">
+            <a href="deposit.html">Create a Deposit Site</a>
+          </li>
+        </ul>
+      </div>
+
+ 		<!-- /#sidebar-wrapper -->
+      <div class="navbar navbar-default navbar-static-top" role="navigation">
+     <div class="container">
+
+
+          <div class="navbar-header">
+          <img src="res/img/logo.png" height="50">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+               </button>
+
+          </div>
+          <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">Home</a></li>
+                     <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-user"></span>
+                <span id="user-signed">
+
+                </span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a onclick="userSignOut()">Logout</a></li>
+              </ul>
+            </li>
+               </ul>
+          </div>
+
+  </div>
+</div>
+
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+              </a>
+
+              <div class="row">
+                <div class="card col-lg-8">
+                  <div class="card-content">
+                    <h2> Create a new Deposit Site </h2>
+                    <form class="form-horizontal">
+                      <div class="form-group">
+                        <label class="control-label col-sm-2" for="deposit-name">Name</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="deposit-name" id="deposit-name" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-sm-2" for="deposit-desc">Description</label>
+                        <div class="col-sm-10">
+                          <textarea class="form-control" name="deposit-desc" id="deposit-desc" rows=3 required></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-sm-2" for="deposit-contact">Contact Number</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="deposit-contact" id="deposit-contact" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-sm-2" for="date-time">Start Time</label>
+                        <div class="col-sm-10">
+                          <input type="datetime-local" class="form-control" name="start-time" id="start-time" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-sm-2" for="date-time">End Time</label>
+                        <div class="col-sm-10">
+                          <input type="datetime-local" class="form-control" name="end-time" id="end-time" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-sm-2" for="location">Location</label>
+                        <div class="col-sm-10">
+                          <select class="form-control" name="location" id="location">
+                            <option value="TN">Tamil Nadu</option>
+                            <option value="HP">Himachal Pradesh</option>
+                            <option value="KN">Karnataka</option>
+                            <option value="KR">Kerala</option>
+                            <option value="AP">Andhra Pradesh</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-sm-2" for="address">Address</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="address" id="address">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div id="map"></div>
+                      </div>
+                      <div class="center card-submit">
+                        <button class="btn btn-primary btn-lg" onclick="createDeposit()">Create</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /#page-content-wrapper -->
+
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+    <script>
+      var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 6
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        google.maps.event.addListener(map, 'click', function(event) {
+          if ( marker ) {
+            marker.setPosition(location);
+          } else {
+            marker = new google.maps.Marker({
+              position: event.latLng,
+              map: map
+            });
+          }
+          marker = new google.maps.Marker({
+            position: event.latLng,
+            map: map
+          });
+
+          console.log(marker);
+        });
+
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8VMfD6SJEuQfZU2McV36Jbhuk9xqGn9M&callback=initMap">
+    </script>
+  </body>
+</html>

@@ -6,6 +6,10 @@ function goToIndex() {
   window.location = "./index.html";
 }
 
+function goToDeposit() {
+  window.location = "./deposit.html";
+}
+
 function userSignOut() {
   firebase.auth().signOut();
 }

@@ -1,6 +1,6 @@
 function loadEvent(user, key, dat) {
 
-  var html_code =   '<div class="card col-lg-8">' +
+  var html_code =   '<div class="card col-lg-12">' +
                       '<div class="card-content">' +
                         '<h3>' + dat.title + '</h3>' +
                         '<i>' + dat.publisher_name + '</i><br>' +
@@ -76,6 +76,16 @@ function sendRequest(key) {
     firebase.database().ref('feed/' + key).update({
       'impact' : setImpact-impact
     })
+
+    firebase.database().ref('ngos/' + ngoKey + '/orders/' + key).update({
+      'status'  : 'waiting',
+      'impact'  : impact
+    });
+
+    firebase.database().ref('ngos/' + ngoKey + '/orders/' + key + '/contacts/' + contactKey).update({
+      'contact_name'    : contact_name,
+      'contact_number'  : contact_number
+    });
   });
 
   swal("Sent Request!",  "Contact : "  + publisher_name + " - " + publisher_number, "success");
