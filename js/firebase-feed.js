@@ -2,12 +2,12 @@ function loadEvent(user, key, dat) {
 
   var html_code =   '<div class="card col-lg-12">' +
                       '<div class="card-content">' +
-                        '<h3>' + dat.title;
+                        '<h1><img src="' + dat.avatar + '" class="img-circle" widht="50px">' + dat.title;
                     if(dat.type == 'daily') {
                       html_code += '<span class="btn btn-primary pull-right">Daily Event</span>';
                     }
-           html_code += '</h3>' +
-                        '<i>' + dat.publisher_name + '</i><br>' +
+           html_code += '</h1>' +
+                        '<h3><i>' + dat.publisher_name + '</i></h3><br>' +
                         '<p>' + dat.desc + '</p>' +
                         '<p><b>' + dat.address + '</b></p><br>' +
                         '<p><b>Can feed ' + dat.impact + ' people</b></p><br><br>' +
@@ -132,6 +132,7 @@ window.addEventListener('load', function() {
   firebase.database().ref('feed').on('child_added', function(data) {
     console.log("Impact : " + data.val().impact);
     dat = {
+      'avatar'          : data.val().publisher_avatar,
       'title'           : data.val().title,
       'desc'            : data.val().desc,
       'address'         : data.val().address,
